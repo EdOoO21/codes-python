@@ -1,0 +1,13 @@
+def f(x,y,p):
+    if (x < 10 or y < 10) and p == 4:
+        return 1
+    if ((x < 10 or y < 10) and p != 4) or (x >= 10 and y >= 10 and p == 4):
+        return 0
+    if p % 2 == 1:
+        return any([f(x-1,y,p+1),f(x-3,y,p+1),f(x,y-1,p+1),f(x,y-3,p+1)])
+    else:
+        return all([f(x-1,y,p+1),f(x-3,y,p+1),f(x,y-1,p+1),f(x,y-3,p+1)])
+
+for s in range(6,100):
+    if f(13,s,1):
+        print(s,end=' ')
